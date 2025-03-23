@@ -1,0 +1,60 @@
+---
+import Header from './Header.astro';
+
+const workExperience = [
+  {
+    title: 'Software Developer',
+    company: 'Zimple Oy',
+    date: '2023 - present',
+    responsibilities: [
+      'Front-end Development: Contributed to enhancing the user experience, resulting in improved feedback from end-users regarding usability and satisfaction.',
+      'Back-end Development: Played a key role in developing APIs that facilitated smoother integration and reduced potential bottlenecks.',
+      'State Management and Testing: Implemented robust testing strategies that led to a more stable application with fewer reported issues.',
+      'Codebase Organization: Contributed to creating an organized and modular codebase, improving development efficiency and code maintainability.',
+      'Database Management: Optimized database interactions, contributing to faster response times and improved overall system efficiency.',
+      'UI Design and Styling: Designed an intuitive user interface, positively influencing user engagement and interaction based on user feedback.',
+    ],
+  },
+  {
+    title: 'Full Stack Developer Trainee',
+    company: 'Integrify',
+    date: '2022 - 2023',
+    responsibilities: [
+      "I have completed a training program in Full Stack Development with mentoring from experienced industry professionals and hands-on project work. I've gained experience in the following areas:",
+      'Front-end Development with JavaScript, TypeScript, React, Redux, Material-UI, SCSS, Animation, and Accessibility',
+      'Back-end Development with Node.js, Express.js, Java and Spring Boot',
+      'Database Management with MongoDB and PostgreSQL',
+      'API Design with REST API',
+      'Testing with Jest',
+      'DevOps Practices such as Bash Scripting, Docker Containers, and GitHub Actions for CI/CD',
+      'Cloud Services with Amazon Web Services (AWS)',
+    ],
+  },
+];
+---
+
+<div class='flex flex-col gap-2' id='work-experience'>
+  <Header headerText='Work experience' />
+  <div class='flex flex-col gap-4'>
+    {
+      workExperience.map((experience) => (
+        <details>
+          <summary class='marker:text-accent marker:text-2xl hover:cursor-pointer hover:bg-neutral-900 p-2 rounded-lg'>
+            <span class='inline-flex flex-col'>
+              <span class='text-xl'>{experience.title}</span>
+              <span class='italic'>
+                {experience.company} | {experience.date}
+              </span>
+            </span>
+          </summary>
+
+          <ul class='list-disc list-inside marker:text-accent space-y-1 ml-6'>
+            {experience.responsibilities.map((responsibility) => (
+              <li>{responsibility}</li>
+            ))}
+          </ul>
+        </details>
+      ))
+    }
+  </div>
+</div>
