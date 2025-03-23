@@ -41,7 +41,9 @@ const workExperience = [
         <details>
           <summary class='marker:text-accent marker:text-2xl hover:cursor-pointer hover:bg-neutral-900 p-2 rounded-lg'>
             <span class='inline-flex flex-col'>
-              <span class='text-xl'>{experience.title}</span>
+              <span class='text-xl text-wrap max-w-[250px] sm:max-w-max'>
+                {experience.title}
+              </span>
               <span class='italic'>
                 {experience.company} | {experience.date}
               </span>
