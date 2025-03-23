@@ -1,0 +1,51 @@
+---
+import Header from './Header.astro';
+import EmailIcon from './icons/EmailIcon.astro';
+import GithubIcon from './icons/GithubIcon.astro';
+import LinkedinIcon from './icons/LinkedinIcon.astro';
+
+const contacts = [
+  {
+    name: 'GitHub',
+    link: 'https://github.com/ioanat94',
+    icon: GithubIcon,
+  },
+  {
+    name: 'LinkedIn',
+    link: 'https://www.linkedin.com/in/ioana-tiplea/',
+    icon: LinkedinIcon,
+  },
+  {
+    name: 'E-mail',
+    link: 'mailto:ioanatiplea94@gmail.com',
+    icon: EmailIcon,
+  },
+];
+---
+
+<div class='flex flex-col gap-2' id='contact'>
+  <Header headerText='Contact' />
+  <div class='flex flex-col gap-4'>
+    <div>
+      <p>Hiring?</p>
+      <p>Need a website?</p>
+      <p>Want to collaborate?</p>
+    </div>
+
+    <p>Reach out to me via GitHub, LinkedIn or e-mail:</p>
+    <div class='flex items-center gap-2'>
+      {
+        contacts.map((contact) => (
+          <a
+            href={contact.link}
+            target='_blank'
+            referrerpolicy='no-referrer'
+            class='hover:opacity-80'
+          >
+            <contact.icon />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>
