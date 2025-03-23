@@ -1,1 +1,6 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+  --color-accent: #872921;
+  --font-roboto-mono: 'Roboto Mono', monospace;
+}
