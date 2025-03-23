@@ -9,16 +9,19 @@ const contacts = [
     name: 'GitHub',
     link: 'https://github.com/ioanat94',
     icon: GithubIcon,
+    ariaLabel: 'Link to my GitHub profile',
   },
   {
     name: 'LinkedIn',
     link: 'https://www.linkedin.com/in/ioana-tiplea/',
     icon: LinkedinIcon,
+    ariaLabel: 'Link to my LinkedIn profile',
   },
   {
     name: 'E-mail',
     link: 'mailto:ioanatiplea94@gmail.com',
     icon: EmailIcon,
+    ariaLabel: 'Send me an e-mail',
   },
 ];
 ---
@@ -41,6 +44,7 @@ const contacts = [
             target='_blank'
             referrerpolicy='no-referrer'
             class='hover:opacity-80'
+            aria-label={contact.ariaLabel}
           >
             <contact.icon />
           </a>

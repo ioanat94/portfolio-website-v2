@@ -8,11 +8,27 @@ import RecentTechIcon from './icons/RecentTechIcon.astro';
 import WorkExperienceIcon from './icons/WorkExperienceIcon.astro';
 
 const navItems = [
-  { href: '#about-me', icon: AboutMeIcon },
-  { href: '#work-experience', icon: WorkExperienceIcon },
-  { href: '#favorite-stack', icon: FavoriteStackIcon },
-  { href: '#recent-tech', icon: RecentTechIcon },
-  { href: '#contact', icon: ContactIcon },
+  {
+    href: '#about-me',
+    icon: AboutMeIcon,
+    ariaLabel: 'Link to about me section',
+  },
+  {
+    href: '#work-experience',
+    icon: WorkExperienceIcon,
+    ariaLabel: 'Link to work experience section',
+  },
+  {
+    href: '#favorite-stack',
+    icon: FavoriteStackIcon,
+    ariaLabel: 'Link to favorite stack section',
+  },
+  {
+    href: '#recent-tech',
+    icon: RecentTechIcon,
+    ariaLabel: 'Link to recent tech section',
+  },
+  { href: '#contact', icon: ContactIcon, ariaLabel: 'Link to contact section' },
 ];
 ---
 
@@ -24,7 +40,11 @@ const navItems = [
   >
   {
     navItems.map((item) => (
-      <a href={`/${item.href}`} class='hover:opacity-80'>
+      <a
+        href={`/${item.href}`}
+        class='hover:opacity-80'
+        aria-label={item.ariaLabel}
+      >
         <item.icon />
       </a>
     ))
