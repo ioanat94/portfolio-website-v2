@@ -13,7 +13,7 @@ export default function getTagBackground(color: string) {
     case 'purple':
       return 'bg-purple-800';
     case 'pink':
-      return 'bg-pink-400';
+      return 'bg-pink-700';
     case 'red':
       return 'bg-red-700';
     default:
