@@ -34,4 +34,14 @@ import '../styles/global.css';
     width: 100%;
     line-height: 150%;
   }
+
+  html {
+    @media screen and (max-width: 640px) {
+      scroll-padding-top: 6rem;
+    }
+
+    @media screen and (min-width: 640px) {
+      scroll-padding-top: 1rem;
+    }
+  }
 </style>
