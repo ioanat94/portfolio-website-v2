@@ -23,7 +23,7 @@ const navItems = [
   >
   {
     navItems.map((item) => (
-      <a href={item.href} class='hover:opacity-80'>
+      <a href={`/${item.href}`} class='hover:opacity-80'>
         <item.icon />
       </a>
     ))

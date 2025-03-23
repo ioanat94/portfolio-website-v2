@@ -4,3 +4,8 @@
   --color-accent: #872921;
   --font-roboto-mono: 'Roboto Mono', monospace;
 }
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/fonts/RobotoMono.woff2') format('woff2');
+}
