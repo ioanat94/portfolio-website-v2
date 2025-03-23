@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import headerImage from '../assets/header_cropped.webp';
+import headerImage from '../assets/header.webp';
 import AboutMeIcon from './icons/AboutMeIcon.astro';
 import ContactIcon from './icons/ContactIcon.astro';
 import FavoriteStackIcon from './icons/FavoriteStackIcon.astro';
@@ -36,7 +36,7 @@ const navItems = [
   class='flex flex-col items-center space-y-4 min-w-20 w-28 font-[Roboto_Mono] pt-4 pl-4 sticky top-0 h-screen'
 >
   <a href='/' class='hover:opacity-80'
-    ><Image src={headerImage} alt='Header image' /></a
+    ><Image src={headerImage} alt='Header image' width='60' /></a
   >
   {
     navItems.map((item) => (
