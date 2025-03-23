@@ -7,7 +7,7 @@ import '../styles/global.css';
 <html lang='en'>
   <head>
     <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <link rel='icon' type='image/png' href='/favicon.ico' />
     <meta name='generator' content={Astro.generator} />
     <meta
@@ -17,9 +17,9 @@ import '../styles/global.css';
     <title>Ioana Tiplea | Software Developer</title>
   </head>
   <body class='bg-black text-white font-roboto-mono'>
-    <div class='flex gap-6'>
+    <div class='flex flex-col sm:flex-row sm:gap-4'>
       <Sidebar />
-      <div class='flex flex-col gap-10 py-7'>
+      <div class='flex flex-col gap-10 px-8 pt-0 pb-7 sm:py-7 sm:px-0'>
         <h1 class='text-4xl text-accent -mb-[18px]'>Hi, I'm Ioana!</h1>
         <slot />
       </div>
