@@ -1,0 +1,44 @@
+---
+import Sidebar from '../components/Sidebar.astro';
+import Layout from '../layouts/Layout.astro';
+
+const catImageUrl = await fetch('https://cataas.com/cat', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+  .then((res) => res.url)
+  .catch((err) => {
+    console.error('Error fetching cat image:', err);
+    return null;
+  });
+---
+
+<Layout>
+  <div>
+    <p>Congratulations, you have found the secret cat stash!</p>
+    <p>This was on top of the pile:</p>
+  </div>
+
+  <div class='pr-3'>
+    {
+      catImageUrl ? (
+        <img
+          src={catImageUrl}
+          alt='A random cat'
+          class='w-full max-w-sm rounded-lg'
+        />
+      ) : (
+        <p>Sorry, no cat image could be loaded at this time.</p>
+      )
+    }
+  </div>
+
+  <p>Refresh to see another cat.</p>
+  <a
+    href='/'
+    class='flex items-center bg-accent rounded w-max px-2 pb-2 pt-1.5 hover:opacity-80'
+    >← Go back</a
+  >
+</Layout>
