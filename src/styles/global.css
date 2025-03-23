@@ -8,4 +8,5 @@
 @font-face {
   font-family: 'Roboto Mono';
   src: url('/fonts/RobotoMono.woff2') format('woff2');
+  font-display: swap;
 }
