@@ -1,36 +1,16 @@
 ---
-import getTagBackground from '../utils/getTagBackground';
-import type { RecentlyDiscoveredTech } from '../utils/types';
-import Header from './Header.astro';
+import getTagBackground from "../utils/getTagBackground";
+import type { RecentlyDiscoveredTech } from "../utils/types";
+import Header from "./Header.astro";
+import { GET } from "../pages/api/notion.json.ts";
 
-const database = await fetch(
-  `https://api.notion.com/v1/databases/${import.meta.env.NOTION_DATABASE_ID}/query`,
-  {
-    method: 'POST',
-    body: JSON.stringify({
-      sorts: [
-        {
-          timestamp: 'created_time',
-          direction: 'descending',
-        },
-      ],
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${import.meta.env.NOTION_SECRET}`,
-      'Notion-Version': '2022-06-28',
-    },
-  }
-)
-  .then((res) => res.json())
-  .catch((err) => console.error(err));
-
-const latest = database.results.slice(0, 6);
+let response = await GET(Astro);
+const latest = await response.json();
 ---
 
-<div class='flex flex-col gap-2' id='recent-tech'>
-  <Header headerText='Recently discovered' />
-  <div class='flex flex-col gap-6'>
+<div class="flex flex-col gap-2" id="recent-tech">
+  <Header headerText="Recently discovered" />
+  <div class="flex flex-col gap-6">
     <div>
       <p>
         As you know, the web development universe is vast and ever-expanding.
@@ -45,17 +25,17 @@ const latest = database.results.slice(0, 6);
       </p>
     </div>
     <div
-      class='grid space-y-6 space-x-12 xl:grid-cols-3 xl:grid-rows-2 lg:grid-cols-2 lg:grid-rows-3 md:grid-cols-1 md:grid-rows-6'
+      class="grid space-y-6 space-x-12 xl:grid-cols-3 xl:grid-rows-2 lg:grid-cols-2 lg:grid-rows-3 md:grid-cols-1 md:grid-rows-6"
     >
       {
         latest.map((item: RecentlyDiscoveredTech) => (
-          <div class='flex flex-col gap-2 w-[350px] h-[190px] border-2 rounded-xl border-accent p-4'>
-            <div class='flex items-center gap-2'>
+          <div class="flex flex-col gap-2 w-[350px] h-[190px] border-2 rounded-xl border-accent p-4">
+            <div class="flex items-center gap-2">
               <p>{item.icon.emoji}</p>
-              <p>{item.properties['Name'].title[0].plain_text}</p>
+              <p>{item.properties["Name"].title[0].plain_text}</p>
             </div>
-            <div class='container flex items-center gap-2 overflow-auto min-h-[24px]'>
-              {item.properties['Tags'].multi_select.map((tag) => (
+            <div class="container flex items-center gap-2 overflow-auto min-h-[24px]">
+              {item.properties["Tags"].multi_select.map((tag) => (
                 <div
                   class={`${getTagBackground(tag.color)} opacity-90 px-2 py-1 rounded w-min text-xs`}
                 >
@@ -63,16 +43,16 @@ const latest = database.results.slice(0, 6);
                 </div>
               ))}
             </div>
-            <p class='text-sm h-[100px] max-h-[100px] overflow-hidden text-ellipsis line-clamp-3'>
-              {item.properties['Description'].rich_text[0].plain_text}
+            <p class="text-sm h-[100px] max-h-[100px] overflow-hidden text-ellipsis line-clamp-3">
+              {item.properties["Description"].rich_text[0].plain_text}
             </p>
             <a
-              href={item.properties['Link'].url}
-              target='_blank'
-              referrerpolicy='no-referrer'
-              class='text-sm text-gray-400 italic hover:opacity-80'
+              href={item.properties["Link"].url}
+              target="_blank"
+              referrerpolicy="no-referrer"
+              class="text-sm text-gray-400 italic hover:opacity-80"
             >
-              {item.properties['Link'].url}
+              {item.properties["Link"].url}
             </a>
           </div>
         ))
